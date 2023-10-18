@@ -38,12 +38,12 @@ Route::group(['middleware' => 'guest:admin', 'namespace' => 'User'], function ()
     Route::get('/shop', [ShopController::class, 'get_shop'])->name('get_shop');
     Route::get('/product/{id}', [ProductController::class, 'get_details_product'])->name('get_details_product');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    Route::controller(CheckoutController::class)->group(function () {
-        Route::get('/checkout', 'index')->name('checkout.index');
-        Route::post('/checkout/create', 'create')->name('checkout.create');
-    });
-    Route::controller(AccountController::class)->group(function () {
-        Route::get('/account', 'index')->name('account.index');
-        Route::get('/item/show/{id}', 'show_item')->name('show_item');
-    });
+});
+Route::controller(CheckoutController::class)->middleware('guest:admin')->group(function () {
+    Route::get('/checkout', 'index')->name('checkout.index');
+    Route::post('/checkout/create', 'create')->name('checkout.create');
+});
+Route::controller(AccountController::class)->middleware('guest:admin')->group(function () {
+    Route::get('/account', 'index')->name('account.index');
+    Route::get('/item/show/{id}', 'show_item')->name('show_item');
 });

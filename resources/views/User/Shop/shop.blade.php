@@ -62,9 +62,10 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">{{ $product->name }}</a>
+                                        <a href="{{ route('get_shop') }}">{{ $product->name }}</a>
                                     </div>
-                                    <h2><a href="product-details.html">{{ $product->description }}</a></h2>
+                                    <h2><a href="{{ route('get_details_product',$product->id) }}">{{
+                                            $product->description }}</a></h2>
                                     <div class="rating-result" title="90%">
                                         <span>
                                             <span>90%</span>
@@ -124,21 +125,10 @@
                                 <h5><a href="{{ route('get_details_product',$product->id) }}">{{ $product->name }}</a>
                                 </h5>
                                 <p class="price mb-0 mt-5">${{ $product->price }}</p>
-                                {{-- <div class="product-rate">
-                                    <div class="product-rating" style="width:90%"></div>
-                                </div> --}}
                             </div>
                         </div>
                         @endforeach
                     </div>
-                    {{-- <div class="banner-img wow fadeIn mb-45 animated d-lg-block d-none">
-                        <img src="{{ asset('assets/imgs/banner/banner-11.jpg')}}" alt="">
-                        <div class="banner-text">
-                            <span>Women Zone</span>
-                            <h4>Save 17% on <br>Office Dress</h4>
-                            <a href="shop.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>

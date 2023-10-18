@@ -90,14 +90,6 @@
                                     <a class="nav-link active" id="Description-tab" data-bs-toggle="tab"
                                         href="#Description">Description</a>
                                 </li>
-                                {{-- <li class="nav-item">
-                                    <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab"
-                                        href="#Additional-info">Additional info</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews
-                                        (3)</a>
-                                </li> --}}
                             </ul>
                             <div class="tab-content shop_info_tab entry-main-content">
                                 <div class="tab-pane fade show active" id="Description">
@@ -418,11 +410,7 @@
                                                         @endif
                                                     </a>
                                                 </div>
-                                                <div class="product-action-1">
-                                                    <a aria-label="Quick view" class="action-btn small hover-up"
-                                                        data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                            class="fi-rs-search"></i></a>
-                                                </div>
+
                                                 <div class="product-badges product-badges-position product-badges-mrg">
                                                     <span class="hot">Hot</span>
                                                 </div>
