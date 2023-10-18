@@ -191,16 +191,9 @@
                                         <td>${{ $item->price*$item->pivot->quantity }}</td>
                                     </tr>
                                     @endforeach
+
                                     <tr>
-                                        <th>SubTotal</th>
-                                        <td class="product-subtotal" colspan="2">${{ $total }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Shipping</th>
-                                        <td colspan="2"><em>Free Shipping</em></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Total</th>
+                                        <th>Sub-Total</th>
                                         <td colspan="2" class="product-subtotal"><span
                                                 class="font-xl text-brand fw-900">${{
                                                 $total }}</span></td>
