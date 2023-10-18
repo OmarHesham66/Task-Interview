@@ -1,11 +1,14 @@
 -- Task --
-- Architecture:
+
+- Architecture
+  
 1- the task built by laravel and mysql and used to the Mvc design pattern and the solution focuses on back-end significantly with also customize on frontend.
   
 - Design :
+  
 1- i designed website to two parts , first part consist of admin panal who can to manage the products , categories , orders , addresses of shiping and users that they are registered in website , admin can do crud operations to categories and product and can admin to monitor the orders that created in website by users ,second part consist of website display the offers and some products and categories.
    
-  *Backend*
+  ***Backend***
 
 .tools Used : Laravel - MySql - Livewire - Integrated with third party api for countries
   1- Controllers : 
@@ -26,7 +29,7 @@
        
        --Account controller display all invoices included (number_of_order - user_id - status_of_order - vat - shipping_price - offers if found - total_price) and shipping addresses for user
        
- *Main Classes*
+ ***Main Classes***
  
   1-CountryService : it is responsible for integrated with third api through send http method type of (get) for get all country to display it for user in checkout page.
   
@@ -56,10 +59,10 @@
  
    Problem 4 : I had a problem in sizes and colors of products and i left out because the time of task but i had handle it in one of projects that i had work on it.
 
- *Packages*
+ ***Packages***
  
    Livewire : i used it for change part in page without reload all page (ex => icon cart - increase qty in cart page)
    Notify : i used it for make beautiful custom message after each action happend in website
 
-   *Frontend*
+   ***Frontend***
    - custom layouts and views to be responsive for requirments of task.
