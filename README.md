@@ -1,66 +1,68 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+-- Task --
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+- Architecture
+  
+1- the task built by laravel and mysql and used to the Mvc design pattern and the solution focuses on back-end significantly with also customize on frontend.
+  
+- Design :
+  
+1- i designed website to two parts , first part consist of admin panal who can to manage the products , categories , orders , addresses of shiping and users that they are registered in website , admin can do crud operations to categories and product and can admin to monitor the orders that created in website by users ,second part consist of website display the offers and some products and categories.
+   
+  ***Backend***
 
-## About Laravel
+.tools Used : Laravel - MySql - Livewire - Integrated with third party api for countries
+  1- Controllers : 
+  
+  Admin => the five controllers contains actions for crud operations in categories and products and orders and shipping
+  
+  User => the six controllers contains:
+  
+       --Auth controller which contains actions for show (login-register-homePage-logout) 
+       
+       --Shop controller contains action for control filter by category for product and display products in database
+       
+       --Cart controller display cart page and i handle update in qunatity of products after included in cart by livewire package
+       
+       --Product controller display product card with all information and i handle also button (add to cart) so that when clicked button in same time change cart icon and display product in icon
+       
+       --Checkout controller display address form to enter data of shiping and apply for it validation and when success that created invoice with offers if found
+       
+       --Account controller display all invoices included (number_of_order - user_id - status_of_order - vat - shipping_price - offers if found - total_price) and shipping addresses for user
+       
+ ***Main Classes***
+ 
+  1-CountryService : it is responsible for integrated with third api through send http method type of (get) for get all country to display it for user in checkout page.
+  
+  2- (IOrder - OperationsOrder) : i applied one of principles in class (open close principle) through interface IOrder and class OperationsOrder implement it and the class responsible for create operation for order and second function is handle offers and calculate 
+      amount and return assocative array of offers if found. 
+      
+  3- (ICartRepository - CartRepository) :i also applied (open close principle) and Repo Repository design pattern and the class responsible for make operations cart which it be (create - show - empty - delete - total_price - update) and all of these operations help me 
+      to handle cart.
+      
+  4- Photo : it is responsible for handle image and fileSystem.
+  
+  5- Get_Cookie : it is responsible for handle cookies in browser for cart of unauthenticated user.
+  
+  6- UpdateQty : it is responsible for decremnt qty in product after create invoice and order.
+  
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+ ***Problems***
+ 
+   Problem 1 : I had a problem with the (Add to Cart) button when I add product in cart , the icon of cart change in same time.
+   Solution : i handle it through livewire package and (event and listener).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+   Problem 2 : I had a problem with the (Add to Cart) button when I kept pressing the button, the quantity increased and was greater than the product quantity.
+   Solution : i handle it through add condition when increase the quantity if quantity in cart greater than quantity in product , add quantity in product in cart.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+   Problem 3 : I had a problem with how i can display orders in admin panal with addresses and with order items.
+   Solution : i handle it through bootstrab , i used collapse component display order items and shipping address in table orders when i press in button show address and show order items in table orders.
+ 
+   Problem 4 : I had a problem in sizes and colors of products and i left out because the time of task but i had handle it in one of projects that i had work on it.
 
-## Learning Laravel
+ ***Packages***
+ 
+   Livewire : i used it for change part in page without reload all page (ex => icon cart - increase qty in cart page)
+   Notify : i used it for make beautiful custom message after each action happend in website
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+   ***Frontend***
+   - custom layouts and views to be responsive for requirments of task.
