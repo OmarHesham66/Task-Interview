@@ -12,7 +12,7 @@
   
   Admin => the five controllers contains actions for crud operations in categories and products and orders and shipping
   
-  User => the six controllers contains :
+  User => the six controllers contains:
   
        --Auth controller which contains actions for show (login-register-homePage-logout) 
        
@@ -43,7 +43,8 @@
   6- UpdateQty : it is responsible for decremnt qty in product after create invoice and order.
   
 
- *Problems*
+ ***Problems***
+ 
    Problem 1 : I had a problem with the (Add to Cart) button when I add product in cart , the icon of cart change in same time.
    Solution : i handle it through livewire package and (event and listener).
 
