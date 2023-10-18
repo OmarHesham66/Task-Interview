@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('order_number');
             $table->foreignId('user_id')->nullable()->references('id')->on('users')->nullOnDelete();
+            $table->string('cookie_user_id');
             $table->enum('status_order', ['pending', 'shiping', 'complete', 'cancel'])->default('pending');
-            // $table->enum('status_payment', ['pending', 'paid', 'failed'])->default('pending');
             $table->string('Vat');
             $table->float('shiping_price');
             $table->json('discount');

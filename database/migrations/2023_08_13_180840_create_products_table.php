@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('description', 255);
             $table->string('photo', 255);
             $table->char('shiping_from', 3);
+            $table->float('shiping_price');
             $table->float('weight')->unsigned();
             $table->float('price');
             $table->float('discount')->nullable();
